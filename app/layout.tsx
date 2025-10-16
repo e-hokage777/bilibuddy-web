@@ -1,14 +1,23 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
-import "./globals.css";
+import { Montserrat, Libre_Baskerville, Inconsolata } from "next/font/google";
+import "@/app/globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+/* sans-serif font */
+const montserrat = Montserrat({
+  variable: "--font-montserrat",
   subsets: ["latin"],
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+/** serif font */
+const libreBaskerville = Libre_Baskerville({
+  weight: ["400", "700"],
+  variable: "--font-libre-baskerville",
+  subsets: ["latin"],
+});
+
+/** mono font */
+const inconsolata = Inconsolata({
+  variable: "--font-inconsolata",
   subsets: ["latin"],
 });
 
@@ -25,7 +34,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${montserrat.variable} ${libreBaskerville.variable} ${inconsolata.variable} font-sans antialiased`}
       >
         {children}
       </body>
