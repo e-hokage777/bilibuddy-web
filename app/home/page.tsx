@@ -32,6 +32,7 @@ export default function Home() {
           </Button>
         </div>
       </section>
+      {/** how it works */}
       <section className={cn(sectionStyles, "bg-gray-300")}>
         <h2 className={sectionTitleStyles}>
           <span className="font-semibold">How</span> BiliBuddy Works
@@ -178,6 +179,7 @@ export default function Home() {
           </div>
         </div>
       </section>
+      {/**contacts */}
     </main>
   );
 }
