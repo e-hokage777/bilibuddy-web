@@ -9,6 +9,7 @@ import {
 } from "./_service/register_form_context";
 import FacilityForm, { FacilityFormData } from "./_components/facility_form";
 import { useContext } from "react";
+import ManagerForm, {ManagerFormData} from "./_components/manager_form";
 
 export default function FacilityRegisterPage() {
   const { activePage, setActivePage, setFacility } =
@@ -42,7 +43,7 @@ export default function FacilityRegisterPage() {
               activeIndex={activePage}
             />
 
-            <FacilityForm
+            {activePage == 0 && <FacilityForm
               handleSubmit={(data: FacilityFormData) => {
                 setFacility({
                   name: data.facility_name,
@@ -51,10 +52,19 @@ export default function FacilityRegisterPage() {
                   district: data.facility_district,
                   community: data.facility_community,
                 });
-
+                
                 setActivePage(activePage + 1);
               }}
-            />
+            />}
+            {activePage == 1 && (
+              <ManagerForm
+                handleSubmit={(data: ManagerFormData) => {
+                  // handle manager form submission (example: advance to next page)
+                  console.log("Manager form submitted:", data);
+                  setActivePage(activePage + 1);
+                }}
+              />
+            )}
           </div>
         </div>
       </RegisterFormProvider>

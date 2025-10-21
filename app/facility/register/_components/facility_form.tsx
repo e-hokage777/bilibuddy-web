@@ -1,9 +1,7 @@
-import { useContext } from "react";
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { z } from "zod";
-import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -43,17 +41,18 @@ export default function FacilityForm({
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    try {
-      console.log(values);
-      toast(
-        <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-          <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-        </pre>
-      );
-    } catch (error) {
-      console.error("Form submission error", error);
-      toast.error("Failed to submit the form. Please try again.");
-    }
+    // try {
+    //   console.log(values);
+    //   toast(
+    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
+    //       <code className="text-white">{JSON.stringify(values, null, 2)}</code>
+    //     </pre>
+    //   );
+    // } catch (error) {
+    //   console.error("Form submission error", error);
+    //   toast.error("Failed to submit the form. Please try again.");
+    // }
+    handleSubmit(values);
   }
 
   // styles for inputs
@@ -67,28 +66,6 @@ export default function FacilityForm({
           Please enter your facility's details
         </p>
       </div>
-      {/* <div className="flex flex-col gap-10">
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="name">Name</Label>
-          <Input name="name" className="bg-muted" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="type">Type</Label>
-          <Input name="type" className="bg-muted" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="region">Region</Label>
-          <Input name="region" className="bg-muted" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="district">District</Label>
-          <Input name="district" className="bg-muted" />
-        </div>
-        <div className="flex flex-col gap-2">
-          <Label htmlFor="community">Community</Label>
-          <Input name="community" className="bg-muted" />
-        </div>
-      </div> */}
 
       <Form {...form}>
         <form
