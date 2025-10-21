@@ -20,13 +20,13 @@ export default function MultiFormProgressIndicator({
           >
             <div
               className={cn(
-                "rounded-full w-8 h-8 font-semibold flex justify-center items-center text-lg",
+                "rounded-full w-8 h-8 font-semibold flex justify-center items-center text-lg  transition-all duration-500",
                 activeIndex != index ? "bg-muted text-muted-foreground" : "bg-primary text-primary-foreground"
               )}
             >
               {index + 1}
             </div>
-            <span className="text-lg">{section}</span>
+            <span className="text-lg transition-all duration-500">{section}</span>
             {index !=  sections.length - 1 && <div className="w-6 h-0.5 bg-muted-foreground"></div>}
           </div>
         );

@@ -9,11 +9,10 @@ import {
 } from "./_service/register_form_context";
 import FacilityForm, { FacilityFormData } from "./_components/facility_form";
 import { useContext } from "react";
-import ManagerForm, {ManagerFormData} from "./_components/manager_form";
+import ManagerForm, { ManagerFormData } from "./_components/manager_form";
+import { cn } from "@/lib/utils";
 
 export default function FacilityRegisterPage() {
-  const { activePage, setActivePage, setFacility } =
-    useContext(RegisterFormContext);
   return (
     <main className="flex flex-row h-screen overflow-hidden">
       <div className="flex-1 p-4">
@@ -36,38 +35,49 @@ export default function FacilityRegisterPage() {
         </div>
       </div>
       <RegisterFormProvider>
-        <div className="flex-1 h-full overflow-y-auto">
-          <div className="flex flex-col gap-8  p-4 pt-20 mx-auto max-w-xl">
-            <MultiFormProgressIndicator
-              sections={["Facility", "Manager"]}
-              activeIndex={activePage}
-            />
-
-            {activePage == 0 && <FacilityForm
-              handleSubmit={(data: FacilityFormData) => {
-                setFacility({
-                  name: data.facility_name,
-                  type: data.facility_type,
-                  region: data.facility_region,
-                  district: data.facility_district,
-                  community: data.facility_community,
-                });
-                
-                setActivePage(activePage + 1);
-              }}
-            />}
-            {activePage == 1 && (
-              <ManagerForm
-                handleSubmit={(data: ManagerFormData) => {
-                  // handle manager form submission (example: advance to next page)
-                  console.log("Manager form submitted:", data);
-                  setActivePage(activePage + 1);
-                }}
-              />
-            )}
-          </div>
-        </div>
+        <RegisterForms />
       </RegisterFormProvider>
     </main>
+  );
+}
+
+function RegisterForms() {
+  const { activePage, setActivePage, setFacility } =
+    useContext(RegisterFormContext);
+  return (
+    <div className="flex-1 h-full overflow-y-auto">
+      <div className="flex flex-col gap-8  p-4 pt-20 mx-auto max-w-xl">
+        <MultiFormProgressIndicator
+          sections={["Facility", "Manager"]}
+          activeIndex={activePage}
+        />
+
+        <div className={cn(activePage != 0 && "hidden")}>
+          <FacilityForm
+            handleSubmit={(data: FacilityFormData) => {
+              setFacility({
+                name: data.facility_name,
+                type: data.facility_type,
+                region: data.facility_region,
+                district: data.facility_district,
+                community: data.facility_community,
+              });
+
+              setActivePage(activePage + 1);
+            }}
+          />
+        </div>
+
+        <div className={cn(activePage != 1 && "hidden")}>
+          <ManagerForm
+            handleSubmit={(data: ManagerFormData) => {
+              // handle manager form submission (example: advance to next page)
+              console.log("Manager form submitted:", data);
+              setActivePage(activePage + 1);
+            }}
+          />
+        </div>
+      </div>
+    </div>
   );
 }

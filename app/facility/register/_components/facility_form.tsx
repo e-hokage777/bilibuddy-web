@@ -38,20 +38,16 @@ export default function FacilityForm({
 }) {
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      facility_name: "",
+      facility_type: "",
+      facility_region: "",
+      facility_district: "",
+      facility_community: "",
+    },
   });
 
   function onSubmit(values: z.infer<typeof formSchema>) {
-    // try {
-    //   console.log(values);
-    //   toast(
-    //     <pre className="mt-2 w-[340px] rounded-md bg-slate-950 p-4">
-    //       <code className="text-white">{JSON.stringify(values, null, 2)}</code>
-    //     </pre>
-    //   );
-    // } catch (error) {
-    //   console.error("Form submission error", error);
-    //   toast.error("Failed to submit the form. Please try again.");
-    // }
     handleSubmit(values);
   }
 
@@ -184,9 +180,11 @@ export default function FacilityForm({
               </FormItem>
             )}
           />
-          <Button type="submit" className="w-full">
-            Next
-          </Button>
+          <div className="flex flex-row justify-end">
+            <Button type="submit" className="min-w-30">
+              Next
+            </Button>
+          </div>
         </form>
       </Form>
     </div>

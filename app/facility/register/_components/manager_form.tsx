@@ -16,6 +16,9 @@ import { Input } from "@/components/ui/input";
 
 import { PhoneInput } from "@/components/ui/phone-input";
 import { PasswordInput } from "@/components/ui/password-input";
+import { cn } from "@/lib/utils";
+import { useContext } from "react";
+import { RegisterFormContext } from "../_service/register_form_context";
 
 const formSchema = z.object({
   first_name: z.string().min(1),
@@ -30,9 +33,13 @@ export type ManagerFormData = z.infer<typeof formSchema>;
 
 export default function ManagerForm({
   handleSubmit,
+  
 }: {
   handleSubmit: (data: ManagerFormData) => void;
+
 }) {
+  const {activePage, setActivePage} = useContext(RegisterFormContext);
+
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
   });
@@ -47,9 +54,9 @@ export default function ManagerForm({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl text-primary text-center">Facility</h2>
+        <h2 className="text-2xl text-primary text-center">Manager</h2>
         <p className="text-center text-secondary">
-          Please enter your facility's details
+          Please enter the facility manager's details
         </p>
       </div>
 
@@ -63,11 +70,11 @@ export default function ManagerForm({
               control={form.control}
               name="first_name"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel>Name</FormLabel>
                   <FormControl>
                     <Input
-                      className={inputStyles}
+                      className={cn(inputStyles, "flex-1")}
                       placeholder="Your First Name"
                       type="text"
                       {...field}
@@ -82,11 +89,11 @@ export default function ManagerForm({
               control={form.control}
               name="last_name"
               render={({ field }) => (
-                <FormItem>
+                <FormItem className="flex-1">
                   <FormLabel>Last Name</FormLabel>
                   <FormControl>
                     <Input
-                      className={inputStyles}
+                      className={cn(inputStyles, "flex-1")}
                       placeholder="Your last name"
                       type="text"
                       {...field}
@@ -171,9 +178,14 @@ export default function ManagerForm({
             )}
           />
 
-          <Button type="submit" className="w-full">
-            Next
-          </Button>
+          <div className="flex flex-row justify-between">
+            <Button type="button" onClick={() => setActivePage(activePage - 1)} className="min-w-30">
+              Previous
+            </Button>
+            <Button type="submit" className="min-w-30">
+              Submit
+            </Button>
+          </div>
         </form>
       </Form>
     </div>
