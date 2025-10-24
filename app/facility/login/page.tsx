@@ -2,10 +2,8 @@
 
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import FacilityForm, { FacilityFormData } from "./_components/facility_form";
-import { useContext } from "react";
-import ManagerForm, { ManagerFormData } from "./_components/manager_form";
 import { cn } from "@/lib/utils";
+import ManagerLoginForm from "./_components/manager_login_form";
 
 export default function FacilityRegisterPage() {
   return (
@@ -21,11 +19,10 @@ export default function FacilityRegisterPage() {
           <div className="w-full h-full bg-black/50 absolute top-0 left-0 flex flex-col gap-4 justify-center items-center text-primary-foreground">
             <div className="flex flex-col gap-4 items-center p-10 backdrop-blur-md rounded-lg overflow-hidden">
               <h3 className="text-4xl font-semibold">
-                Facility Manager Sign Up
+                Sign In
               </h3>
               <p className="text-2xl max-w-100 font-light text-center">
-                Create your BiliBuddy manager account and make bilibuddy
-                available to your facility
+                Welcome back, please log into your account.
               </p>
             </div>
           </div>
@@ -33,7 +30,7 @@ export default function FacilityRegisterPage() {
       </div>
 
       <div className="flex-1 mt-10">
-        <ManagerForm/>
+        <ManagerLoginForm/>
       </div>
     </main>
   );

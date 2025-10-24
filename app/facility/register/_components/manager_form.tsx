@@ -1,3 +1,5 @@
+"use client";
+
 import { toast } from "sonner";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -18,7 +20,11 @@ import { PhoneInput } from "@/components/ui/phone-input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { cn } from "@/lib/utils";
 import { useContext } from "react";
-import { RegisterFormContext } from "../_service/register_form_context";
+import { createManager } from "@/app/_actions/auth";
+import { useState } from "react";
+import { FacilityManagerCreateModel } from "@/data/models/facility_manager_model";
+import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   first_name: z.string().min(1),
@@ -33,19 +39,47 @@ export type ManagerFormData = z.infer<typeof formSchema>;
 
 export default function ManagerForm({
   handleSubmit,
-  
 }: {
-  handleSubmit: (data: ManagerFormData) => void;
-
+  handleSubmit?: (data: ManagerFormData) => void;
 }) {
-  const {activePage, setActivePage} = useContext(RegisterFormContext);
-
+  const [loading, setLoading] = useState<boolean>(false);
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
+    defaultValues: {
+      first_name: "",
+      last_name: "",
+      email: "",
+      phone_number: "",
+      password: "",
+      confirm_password: "",
+    },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
-    handleSubmit(values);
+  async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
+
+    if (values.password != values.confirm_password) {
+      toast.error("Passwords must match");
+      setLoading(false);
+      return;
+    }
+
+    const manager: FacilityManagerCreateModel = {
+      password: values.password,
+      firstName: values.first_name,
+      lastName: values.last_name,
+      email: values.email,
+    };
+    try {
+      const response = await createManager(manager);
+      toast.success("Manager created successfully", {
+        onDismiss: (toast) => redirect("/facility/login"),
+      });
+    } catch (error: any) {
+      toast.error(error.toString());
+    } finally {
+      setLoading(false);
+    }
   }
 
   // styles for inputs
@@ -54,10 +88,8 @@ export default function ManagerForm({
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl text-primary text-center">Manager</h2>
-        <p className="text-center text-secondary">
-          Please enter the facility manager's details
-        </p>
+        <h2 className="text-2xl text-primary text-center">Sign Up</h2>
+        <p className="text-center text-secondary">Please enter your details</p>
       </div>
 
       <Form {...form}>
@@ -178,13 +210,20 @@ export default function ManagerForm({
             )}
           />
 
-          <div className="flex flex-row justify-between">
-            <Button type="button" onClick={() => setActivePage(activePage - 1)} className="min-w-30">
-              Previous
+          <div className="flex flex-col gap-2">
+            <Button
+              type="submit"
+              className="w-full text-lg py-4"
+              disabled={loading}
+            >
+              {loading ? "Loading..." : "Submit"}
             </Button>
-            <Button type="submit" className="min-w-30">
-              Submit
-            </Button>
+            <span className="text-sm">
+              Already have an account ?{" "}
+              <Link href="#" className="text-secondary">
+                Sign in
+              </Link>
+            </span>
           </div>
         </form>
       </Form>

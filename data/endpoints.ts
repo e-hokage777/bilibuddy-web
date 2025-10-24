@@ -1,3 +1,7 @@
 export const AuthEndpoints = {
-  register: "facility/register",
+
+  manager: {
+    create: "users/facility_manager",
+    login: "facility_manager/login"
+  }
 };
