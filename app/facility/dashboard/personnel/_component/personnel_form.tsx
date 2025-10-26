@@ -19,10 +19,17 @@ import { Input } from "@/components/ui/input";
 import { PhoneInput } from "@/components/ui/phone-input";
 import { PasswordInput } from "@/components/ui/password-input";
 import { createPersonnel } from "@/app/_actions/personnel";
-
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from "@/components/ui/select"
 const formSchema = z.object({
   firstName: z.string().min(1).min(1),
   lastName: z.string().min(1).min(1),
+  title: z.string().min(1).min(1),
   email: z.string(),
   phoneNumber: z.string(),
   password: z.string(),
@@ -36,6 +43,7 @@ export default function PersonnelForm() {
     defaultValues: {
       firstName: "",
       lastName: "",
+      title: "",
       email: "",
       phoneNumber: "",
       password: "",
@@ -98,6 +106,30 @@ export default function PersonnelForm() {
                   {...field}
                 />
               </FormControl>
+
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="title"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Title</FormLabel>
+              <Select onValueChange={field.onChange} defaultValue={field.value}>
+                <FormControl>
+                  <SelectTrigger className="w-full">
+                    <SelectValue placeholder="Personnel's title" />
+                  </SelectTrigger>
+                </FormControl>
+                <SelectContent>
+                  <SelectItem value="doctor">Doctor</SelectItem>
+                  <SelectItem value="nurse">Nurse</SelectItem>
+                  <SelectItem value="other">Other</SelectItem>
+                </SelectContent>
+              </Select>
 
               <FormMessage />
             </FormItem>

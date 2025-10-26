@@ -220,7 +220,7 @@ export default function ManagerForm({
             </Button>
             <span className="text-sm">
               Already have an account ?{" "}
-              <Link href="#" className="text-secondary">
+              <Link href="/facility/login" className="text-secondary">
                 Sign in
               </Link>
             </span>

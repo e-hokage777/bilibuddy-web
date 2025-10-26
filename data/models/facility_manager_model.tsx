@@ -12,6 +12,6 @@ export interface FacilityManagerCreateModel extends FacilityManagerModel {
 }
 
 export interface FacilityManagerLoginModel {
-  email: string;
+  username: string;
   password: string;
 }

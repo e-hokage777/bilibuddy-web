@@ -1,7 +1,7 @@
 "use server";
 
 import api from "@/data/core/api";
-import { AuthEndpoints } from "@/data/endpoints";
+import { Endpoints } from "@/data/endpoints";
 import { camelCaseKeysToSnake } from "@/lib/utils";
 
 export async function createPersonnel({
@@ -9,9 +9,10 @@ export async function createPersonnel({
 }: {
   personnel: PersonnelCreateModel;
 }) {
+
   try {
     const response = await api.post(
-      AuthEndpoints.personnel.create,
+      Endpoints.personnel.create,
       camelCaseKeysToSnake(personnel)
     );
   } catch (error: any) {

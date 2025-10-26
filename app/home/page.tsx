@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+import { Button, buttonVariants } from "@/components/ui/button";
 import Navbar from "../_components/navbar";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
@@ -177,9 +177,15 @@ export default function Home() {
             <p className="text-2xl max-w-100 font-light text-center">
               With Bilibuddy, parents can easily monitory theic
             </p>
-            <Button className="text-2xl bg-primary-foreground text-primary px-8 py-6 hover:text-primary-foreground">
+            <Link
+              href="/facility/register"
+              className={cn(
+                buttonVariants(),
+                "text-2xl bg-primary-foreground text-primary px-8 py-6 hover:text-primary-foreground"
+              )}
+            >
               Register Now
-            </Button>
+            </Link>
           </div>
         </div>
       </section>

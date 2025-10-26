@@ -27,6 +27,7 @@ import {
   FacilityManagerLoginModel,
 } from "@/data/models/facility_manager_model";
 import Link from "next/link";
+import { redirect } from "next/navigation";
 
 const formSchema = z.object({
   email: z.string().min(1),
@@ -47,13 +48,17 @@ export default function ManagerLoginForm({}: {}) {
     setLoading(true);
 
     const loginDetails: FacilityManagerLoginModel = {
-      email: values.email,
+      username: values.email,
       password: values.password,
     };
     try {
       const response = await logManagerIn(loginDetails);
-      toast.success("Manager created successfully");
+      toast.success("Login successful");
+      redirect("/facility/dashboard/personnel");
     } catch (error: any) {
+      if (error.message === "NEXT_REDIRECT") {
+        throw error; // Re-throw the redirect error
+      }
       toast.error(error.toString());
     } finally {
       setLoading(false);
@@ -66,8 +71,10 @@ export default function ManagerLoginForm({}: {}) {
   return (
     <div className="flex flex-col gap-8">
       <div className="flex flex-col gap-2">
-        <h2 className="text-2xl text-primary text-center">Sign Up</h2>
-        <p className="text-center text-secondary">Please enter your details</p>
+        <h2 className="text-2xl text-primary text-center">Sign In</h2>
+        <p className="text-center text-secondary">
+          We're glad to have you back
+        </p>
       </div>
 
       <Form {...form}>
