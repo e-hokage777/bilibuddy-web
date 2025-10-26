@@ -5,7 +5,7 @@ import {
   FacilityManagerLoginModel,
 } from "@/data/models/facility_manager_model";
 import { FacilityCreateModel } from "@/data/models/facility_model";
-import api from "@/data/models/api";
+import api from "@/data/core/api";
 import { AuthEndpoints } from "@/data/endpoints";
 import { camelCaseKeysToSnake } from "@/lib/utils";
 

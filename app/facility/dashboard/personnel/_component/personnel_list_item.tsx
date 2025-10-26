@@ -17,10 +17,10 @@ export default function PersonnelListItem({
   phoneNumber: string;
   email: string;
 }) {
-  const titleStyles = "text-sm text-primary text-bold";
-  const valueStyles = "text-sm text-secondary";
+  const titleStyles = "text-sm text-primary text-bold text-gray-400";
+  const valueStyles = "text-sm text-secondary text-white";
   return (
-    <div className="flex flex-row justify-between items-center p-8">
+    <div className="flex flex-row justify-between items-center p-4 border border-primary rounded-md bg-secondary">
       <Avatar className="w-16 h-16">
         <AvatarImage src="" />
         <AvatarFallback>CN</AvatarFallback>
@@ -46,7 +46,7 @@ export default function PersonnelListItem({
         <span className={cn(valueStyles)}>{email}</span>
       </div>
       <div className="flex gap-4">
-        <Trash2 className="text-gray-500 hover:text-red-500 "/>
+        <Trash2 className="text-gray-500 hover:text-red-500 cursor-pointer "/>
       </div>
     </div>
   );
