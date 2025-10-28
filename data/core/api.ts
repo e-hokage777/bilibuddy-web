@@ -37,7 +37,7 @@ api.interceptors.response.use(
       // The request was made and the server responded with a status code
       // that falls out of the range of 2xx
       if (error.response.data.detail) {
-        Promise.reject(
+        return Promise.reject(
           new AxiosError(error.response.data.detail, error.response.status)
         );
       }
@@ -46,10 +46,10 @@ api.interceptors.response.use(
       // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
       // http.ClientRequest in node.js
       // console.log(error.request);
-      Promise.reject(new AxiosError("Something went wrong"));
+      return Promise.reject(new AxiosError("Something went wrong"));
     } else {
       // Something happened in setting up the request that triggered an Error
-      Promise.reject(error);
+      return Promise.reject(error);
     }
   }
 );

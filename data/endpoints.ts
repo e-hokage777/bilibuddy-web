@@ -10,6 +10,6 @@ export const Endpoints = {
 
   facility: {
     get: "facility_manager/facility",
-    create: "facility"
+    create: "facility_manager/facility"
   }
 };

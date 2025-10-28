@@ -45,7 +45,7 @@ export default async function DashboardFacility() {
                       facility
                     </DialogDescription>
                   </DialogHeader>
-                  <FacilityForm/>
+                  <FacilityForm />
                 </DialogContent>
               </Dialog>
             </div>

@@ -36,6 +36,7 @@ export async function logManagerIn(loginDetails: FacilityManagerLoginModel) {
         "Content-Type": "multipart/form-data",
       },
     });
+
     const data = response.data as { access_token: string; token_type: string };
 
     const cookiesStore = await cookies();

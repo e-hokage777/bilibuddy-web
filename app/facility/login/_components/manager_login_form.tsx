@@ -126,9 +126,9 @@ export default function ManagerLoginForm({}: {}) {
               {loading ? "Loading..." : "Submit"}
             </Button>
             <span className="text-sm">
-              Already have an account ?{" "}
-              <Link href="#" className="text-secondary">
-                Sign in
+              Not registered yet ?{" "}
+              <Link href="/facility/register" className="text-secondary">
+                Sign up
               </Link>
             </span>
           </div>
