@@ -26,3 +26,25 @@ export function camelCaseKeysToSnake(obj: { [key: string]: any }): {
   }
   return newObj;
 }
+
+
+export function snakeCaseKeysToCamel(obj: { [key: string]: any }): {
+  [key: string]: any;
+} {
+  if (typeof obj !== "object" || obj === null) {
+    return obj;
+  }
+
+  if (Array.isArray(obj)) {
+    return obj.map((item) => snakeCaseKeysToCamel(item));
+  }
+
+  const newObj: { [key: string]: any } = {};
+  for (const oldName in obj) {
+    if (Object.prototype.hasOwnProperty.call(obj, oldName)) {
+      const newName = oldName.replace(/_([a-z])/g, (_, letter) => letter.toUpperCase());
+      newObj[newName] = snakeCaseKeysToCamel(obj[oldName]); // Recursively convert nested values
+    }
+  }
+  return newObj;
+}

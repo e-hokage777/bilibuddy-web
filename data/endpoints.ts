@@ -6,6 +6,7 @@ export const Endpoints = {
 
   personnel: {
     create: "users/health_personnel",
+    get: "facility_manager/personnel",
   },
 
   facility: {

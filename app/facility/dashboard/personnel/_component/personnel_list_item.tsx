@@ -39,7 +39,7 @@ export default function PersonnelListItem({
       </div>
       <div className="flex flex-col gap-2">
         <span className={cn(titleStyles)}>Phone</span>
-        <span className={cn(valueStyles)}>{phoneNumber}</span>
+        <span className={cn(valueStyles)}>{phoneNumber ?? "N/A"}</span>
       </div>
       <div className="flex flex-col gap-2">
         <span className={cn(titleStyles)}>Email</span>

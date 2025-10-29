@@ -8,7 +8,7 @@ import {
 import { camelCaseKeysToSnake } from "@/lib/utils";
 
 /** returns the facility of the manager */
-export async function getFacility(): Promise<FacilityModel | undefined> {
+export async function getFacility(): Promise<FacilityModel | null> {
   try {
     const response = await api.get(Endpoints.facility.get);
     return response.data;

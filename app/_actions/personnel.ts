@@ -2,14 +2,17 @@
 
 import api from "@/data/core/api";
 import { Endpoints } from "@/data/endpoints";
-import { camelCaseKeysToSnake } from "@/lib/utils";
+import {
+  PersonnelCreateModel,
+  PersonnelReadModel,
+} from "@/data/models/personnel_model";
+import { camelCaseKeysToSnake, snakeCaseKeysToCamel } from "@/lib/utils";
 
 export async function createPersonnel({
   personnel,
 }: {
   personnel: PersonnelCreateModel;
 }) {
-
   try {
     const response = await api.post(
       Endpoints.personnel.create,
@@ -24,5 +27,16 @@ export async function createPersonnel({
       throw error.message!;
     }
     throw "Something went wrong";
+  }
+}
+
+export async function getPersonnel(): Promise<PersonnelReadModel[]> {
+  try {
+    const response = await api.get(Endpoints.personnel.get);
+    return (response.data as []).map(
+      (item) => snakeCaseKeysToCamel(item) as PersonnelReadModel
+    );
+  } catch (error: any) {
+    throw error ?? "Something went wrong";
   }
 }
