@@ -40,3 +40,11 @@ export async function getPersonnel(): Promise<PersonnelReadModel[]> {
     throw error ?? "Something went wrong";
   }
 }
+
+export async function deletePersonnel({ id }: { id: string }) {
+  try {
+    const response = await api.delete(Endpoints.personnel.delete + `/${id}`);
+  } catch (error: any) {
+    throw error ?? "Something went wrong";
+  }
+}

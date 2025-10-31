@@ -1,3 +1,7 @@
+"use client";
+
+import { deletePersonnel } from "@/app/_actions/personnel";
+import DeleteButton from "@/app/_components/delete_button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { cn } from "@/lib/utils";
 import { Trash2 } from "lucide-react";
@@ -23,7 +27,12 @@ export default function PersonnelListItem({
     <div className="flex flex-row justify-between items-center p-4 border border-primary rounded-md bg-secondary">
       <Avatar className="w-16 h-16">
         <AvatarImage src="" />
-        <AvatarFallback>CN</AvatarFallback>
+        <AvatarFallback>
+          <span className="uppercase">
+            {firstName[0]}
+            {lastName[0]}
+          </span>
+        </AvatarFallback>
       </Avatar>
       <div className="flex flex-col gap-2">
         <span className={cn(titleStyles)}>Name</span>
@@ -33,9 +42,7 @@ export default function PersonnelListItem({
       </div>
       <div className="flex flex-col gap-2">
         <span className={cn(titleStyles)}>Title</span>
-        <span className={cn(valueStyles)}>
-          {title} 
-        </span>
+        <span className={cn(valueStyles)}>{title}</span>
       </div>
       <div className="flex flex-col gap-2">
         <span className={cn(titleStyles)}>Phone</span>
@@ -46,7 +53,10 @@ export default function PersonnelListItem({
         <span className={cn(valueStyles)}>{email}</span>
       </div>
       <div className="flex gap-4">
-        <Trash2 className="text-gray-500 hover:text-red-500 cursor-pointer "/>
+        <DeleteButton
+          handleDelete={deletePersonnel.bind(null, { id })}
+          description="This action cannot be reversed. Deleting this personnel will remove all their details from the servers"
+        />
       </div>
     </div>
   );
