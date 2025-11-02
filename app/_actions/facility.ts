@@ -30,3 +30,8 @@ export async function createFacility(
     throw error.message;
   }
 }
+
+export async function deleteFacility(
+): Promise<void> {
+
+}

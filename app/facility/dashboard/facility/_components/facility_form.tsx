@@ -39,8 +39,10 @@ const formSchema = z.object({
 });
 
 export default function FacilityForm({
+  facility,
   onSuccess,
 }: {
+  facility?: FacilityModel;
   onSuccess?: (facility: FacilityModel) => void;
 }) {
   const [loading, setLoading] = useState<boolean>(false);

@@ -4,6 +4,8 @@ export interface FacilityModel {
   region: string;
   district: string;
   community: string;
+  createdAt: string;
+  updatedAt: string;
 }
 
 export interface FacilityCreateModel extends FacilityModel {}
