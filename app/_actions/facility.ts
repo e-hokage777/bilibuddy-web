@@ -5,7 +5,7 @@ import {
   FacilityCreateModel,
   FacilityModel,
 } from "@/data/models/facility_model";
-import { camelCaseKeysToSnake } from "@/lib/utils";
+import { camelCaseKeysToSnake, snakeCaseKeysToCamel } from "@/lib/utils";
 
 /** returns the facility of the manager */
 export async function getFacility(): Promise<FacilityModel | null> {
@@ -31,7 +31,17 @@ export async function createFacility(
   }
 }
 
-export async function deleteFacility(
-): Promise<void> {
+export async function getFacilityStatistics(): Promise<{
+  totalNewborns: number;
+  totalHealthPersonnel: number;
+}> {
+  try {
+    const response = await api.get(Endpoints.facility.statistics);
 
+    return snakeCaseKeysToCamel(response.data) as any;
+  } catch (error: any) {
+    throw error.message;
+  }
 }
+
+export async function deleteFacility(): Promise<void> {}

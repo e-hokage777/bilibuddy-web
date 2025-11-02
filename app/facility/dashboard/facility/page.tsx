@@ -1,7 +1,11 @@
 import { Card } from "@/components/ui/card";
 import DashboardSectionHeader from "../_components/dashboard_section_header";
 
-import { deleteFacility, getFacility } from "@/app/_actions/facility";
+import {
+  deleteFacility,
+  getFacility,
+  getFacilityStatistics,
+} from "@/app/_actions/facility";
 import {
   Dialog,
   DialogContent,
@@ -16,7 +20,10 @@ import FacilityForm from "./_components/facility_form";
 import DeleteButton from "@/app/_components/delete_button";
 
 export default async function DashboardFacility() {
-  const facility = await getFacility();
+  const [facility, stats] = await Promise.all([
+    getFacility(),
+    getFacilityStatistics(),
+  ]);
 
   return (
     <div className="h-full">
@@ -97,11 +104,11 @@ export default async function DashboardFacility() {
           <div className="flex flex-col flex-1 gap-4 max-w-[465px]">
             <div className="rounded-md flex flex-col justify-center items-center gap-4 border-2 border-primary flex-1 h-full">
               <p className="text-lg text-gray-500">Personnel</p>
-              <p className="text-8xl text-primary font-bold">27</p>
+              <p className="text-8xl text-primary font-bold">{stats.totalHealthPersonnel}</p>
             </div>
             <div className="rounded-md flex flex-col justify-center items-center gap-4 bg-primary flex-1 h-full">
               <p className="text-lg text-gray-500">New Borns</p>
-              <p className="text-8xl  font-bold text-primary-foreground">101</p>
+              <p className="text-8xl  font-bold text-primary-foreground">{stats.totalNewborns}</p>
             </div>
           </div>
         </div>

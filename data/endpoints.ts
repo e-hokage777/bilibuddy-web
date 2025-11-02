@@ -1,3 +1,5 @@
+import { stat } from "fs";
+
 export const Endpoints = {
   manager: {
     create: "users/facility_manager",
@@ -12,6 +14,7 @@ export const Endpoints = {
 
   facility: {
     get: "facility_manager/facility",
-    create: "facility_manager/facility"
+    create: "facility_manager/facility",
+    statistics: "facility_manager/facility/summary",
   }
 };
