@@ -21,8 +21,8 @@ export default async function DashboardFacility() {
   return (
     <div className="h-full">
       {facility ? (
-        <div className="flex flex-row justify-center items-center">
-          <Card className="w-full max-w-2xl p-8 pb-32">
+        <div className="flex flex-row justify-center items-stretch gap-8 mt-8">
+          <Card className="w-full p-8 pb-32 flex-1 max-w-[465px]">
             <div className="flex justify-between items-center mb-6">
               <h2 className="text-2xl font-semibold mb-4">
                 Facility Information
@@ -77,7 +77,8 @@ export default async function DashboardFacility() {
                   </label>
                 </div>
                 <p className="mt-1 text-primary text-xl ms-8">
-                  {facility.community} {facility.district} <br/> {facility.region}{" "}
+                  {facility.community} {facility.district} <br />{" "}
+                  {facility.region}{" "}
                 </p>
               </div>
               <div>
@@ -93,6 +94,16 @@ export default async function DashboardFacility() {
               </div>
             </div>
           </Card>
+          <div className="flex flex-col flex-1 gap-4 max-w-[465px]">
+            <div className="rounded-md flex flex-col justify-center items-center gap-4 border-2 border-primary flex-1 h-full">
+              <p className="text-lg text-gray-500">Personnel</p>
+              <p className="text-8xl text-primary font-bold">27</p>
+            </div>
+            <div className="rounded-md flex flex-col justify-center items-center gap-4 bg-primary flex-1 h-full">
+              <p className="text-lg text-gray-500">New Borns</p>
+              <p className="text-8xl  font-bold text-primary-foreground">101</p>
+            </div>
+          </div>
         </div>
       ) : (
         <div className="text-center text-xl h-full w-full flex flex-col gap-4 items-center justify-center">
