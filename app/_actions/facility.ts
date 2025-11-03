@@ -11,7 +11,7 @@ import { camelCaseKeysToSnake, snakeCaseKeysToCamel } from "@/lib/utils";
 export async function getFacility(): Promise<FacilityModel | null> {
   try {
     const response = await api.get(Endpoints.facility.get);
-    return response.data;
+    return snakeCaseKeysToCamel(response.data) as FacilityModel;
   } catch (error: any) {
     throw error.message;
   }

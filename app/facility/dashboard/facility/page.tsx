@@ -25,6 +25,7 @@ export default async function DashboardFacility() {
     getFacilityStatistics(),
   ]);
 
+
   return (
     <div className="h-full">
       {facility ? (
