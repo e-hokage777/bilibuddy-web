@@ -1,3 +1,4 @@
+import { updateFacility } from "@/app/_actions/facility";
 import { stat } from "fs";
 
 export const Endpoints = {
@@ -16,5 +17,6 @@ export const Endpoints = {
     get: "facility_manager/facility",
     create: "facility_manager/facility",
     statistics: "facility_manager/facility/summary",
+    update: "facility_manager/facility/",
   }
 };

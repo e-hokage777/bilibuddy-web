@@ -23,10 +23,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { createFacility } from "@/app/_actions/facility";
+import { createFacility, updateFacility } from "@/app/_actions/facility";
 import {
   FacilityCreateModel,
   FacilityModel,
+  FacilityUpdateModel,
 } from "@/data/models/facility_model";
 import { useRouter } from "next/navigation";
 
@@ -50,17 +51,20 @@ export default function FacilityForm({
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      name: "",
-      type: "",
-      region: "",
-      district: "",
-      community: "",
+      name: facility?.name || "",
+      type: facility?.type || "",
+      region: facility?.region || "",
+      district: facility?.district || "",
+      community: facility?.community || "",
     },
   });
 
   async function onSubmit(values: z.infer<typeof formSchema>) {
+    setLoading(true);
     try {
-      const response = await createFacility(values as FacilityCreateModel);
+      const response = await (facility
+        ? updateFacility(facility.id, values as FacilityUpdateModel)
+        : createFacility(values as FacilityCreateModel));
       if (onSuccess) onSuccess(response);
       else refresh();
     } catch (error: any) {

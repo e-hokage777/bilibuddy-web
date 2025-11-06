@@ -18,13 +18,13 @@ import { Button } from "@/components/ui/button";
 import { Hospital, IdCard, MapPin, Pen, Plus } from "lucide-react";
 import FacilityForm from "./_components/facility_form";
 import DeleteButton from "@/app/_components/delete_button";
+import { toast } from "sonner";
 
 export default async function DashboardFacility() {
   const [facility, stats] = await Promise.all([
     getFacility(),
     getFacilityStatistics(),
   ]);
-
 
   return (
     <div className="h-full">
@@ -36,7 +36,10 @@ export default async function DashboardFacility() {
                 Facility Information
               </h2>
               <div className="flex flex-row items-center gap-4">
-                <DeleteButton handleDelete={deleteFacility} />
+                <DeleteButton
+                  handleDelete={deleteFacility}
+                  description="This action will permanently delete your facility and it's associated personnel and newborns"
+                />
                 <Dialog>
                   <DialogTrigger asChild>
                     <Pen className="text-gray-500 hover:text-primary cursor-pointer" />
@@ -105,11 +108,15 @@ export default async function DashboardFacility() {
           <div className="flex flex-col flex-1 gap-4 max-w-[465px]">
             <div className="rounded-md flex flex-col justify-center items-center gap-4 border-2 border-primary flex-1 h-full">
               <p className="text-lg text-gray-500">Personnel</p>
-              <p className="text-8xl text-primary font-bold">{stats.totalHealthPersonnel}</p>
+              <p className="text-8xl text-primary font-bold">
+                {stats.totalHealthPersonnel}
+              </p>
             </div>
             <div className="rounded-md flex flex-col justify-center items-center gap-4 bg-primary flex-1 h-full">
               <p className="text-lg text-gray-500">New Borns</p>
-              <p className="text-8xl  font-bold text-primary-foreground">{stats.totalNewborns}</p>
+              <p className="text-8xl  font-bold text-primary-foreground">
+                {stats.totalNewborns}
+              </p>
             </div>
           </div>
         </div>

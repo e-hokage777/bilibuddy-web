@@ -4,6 +4,7 @@ import { Endpoints } from "@/data/endpoints";
 import {
   FacilityCreateModel,
   FacilityModel,
+  FacilityUpdateModel,
 } from "@/data/models/facility_model";
 import { camelCaseKeysToSnake, snakeCaseKeysToCamel } from "@/lib/utils";
 
@@ -45,3 +46,18 @@ export async function getFacilityStatistics(): Promise<{
 }
 
 export async function deleteFacility(): Promise<void> {}
+
+export async function updateFacility(
+  facilityId: string,
+  facility: FacilityUpdateModel
+): Promise<FacilityModel> {
+  try {
+    const response = await api.put(
+      `${Endpoints.facility.update}${facilityId}`,
+      camelCaseKeysToSnake(facility)
+    );
+    return response.data;
+  } catch (error: any) {
+    throw error.message;
+  }
+}
