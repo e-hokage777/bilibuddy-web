@@ -12,16 +12,16 @@ export default function Navbar({ className }: { className?: string }) {
       <nav>
         <ul className="flex items-center gap-4">
             <li>
-                <Link className={linkStyles} href="#">Home</Link>
+                <Link className={linkStyles} href="#hero">Home</Link>
             </li>
             <li>
-                <Link className={linkStyles} href="#">How it Works</Link>
+                <Link className={linkStyles} href="#how-it-works">How it Works</Link>
             </li>
             <li>
-                <Link className={linkStyles} href="#">Our Mission</Link>
+                <Link className={linkStyles} href="#our-mission">Our Mission</Link>
             </li>
             <li>
-                <Link className={linkStyles} href="#">Contact Us</Link>
+                <Link className={linkStyles} href="#contact">Contact Us</Link>
             </li>
         </ul>
       </nav>
