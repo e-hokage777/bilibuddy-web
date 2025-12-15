@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Montserrat, Libre_Baskerville, Inconsolata } from "next/font/google";
 import "@/app/globals.css";
 import { Toaster } from "sonner";
+import { Analytics } from "@vercel/analytics/next"
 
 /* sans-serif font */
 const montserrat = Montserrat({
