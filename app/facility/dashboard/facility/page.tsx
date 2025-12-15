@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import DashboardSectionHeader from "../_components/dashboard_section_header";
 
 import {
   deleteFacility,

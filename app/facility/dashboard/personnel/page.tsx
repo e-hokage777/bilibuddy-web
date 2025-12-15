@@ -21,16 +21,27 @@ import { PersonnelReadModel } from "@/data/models/personnel_model";
 import { getPersonnel } from "@/app/_actions/personnel";
 import FacilityForm from "../facility/_components/facility_form";
 
+
 export default async function DashboardPersonnel() {
-  // getting facility
-  let facility: FacilityModel | null;
+  // getting facility (dummy data for local/dev preview)
+  let facility: FacilityModel | null = {
+    id: "1",
+    name: "Central Hospital",
+    type: "Government Hospital",
+    community: "Accra",
+    district: "Accra Metro",
+    region: "Greater Accra",
+    createdAt: new Date("2024-01-15").toString(),
+    updatedAt: new Date("2024-01-15").toString(),
+  };
+
   let personnel: PersonnelReadModel[] = [];
 
-  try {
-    facility = await getFacility();
-  } catch (error: any) {
-    throw Error(error.toString());
-  }
+  // try {
+  //   facility = await getFacility();
+  // } catch (error: any) {
+  //   throw Error(error.toString());
+  // }
 
   if (!facility) {
     return (
@@ -58,11 +69,11 @@ export default async function DashboardPersonnel() {
   }
 
   // get the personnel
-  try {
-    personnel = await getPersonnel();
-  } catch (error) {
-    throw Error("Something went wrong, please check your internet connection");
-  }
+  // try {
+  //   personnel = await getPersonnel();
+  // } catch (error) {
+  //   throw Error("Something went wrong, please check your internet connection");
+  // }
 
   return (
     <div>

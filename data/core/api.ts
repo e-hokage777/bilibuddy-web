@@ -1,5 +1,5 @@
 import axios, { AxiosError } from "axios";
-import { cookies } from "next/headers";
+// import { cookies } from "next/headers";
 
 const api = axios.create({
   baseURL: process.env.BASE_URL,
@@ -10,11 +10,11 @@ const api = axios.create({
 /// request interceptors
 api.interceptors.request.use(
   async (config) => {
-    const cookiesStore = await cookies();
-    const token = cookiesStore.get("access_token");
-    if (token) {
-      config.headers!.Authorization = `Bearer ${token.value}`;
-    }
+    // const cookiesStore = await cookies();
+    // const token = cookiesStore.get("access_token");
+    // if (token) {
+    //   config.headers!.Authorization = `Bearer ${token.value}`;
+    // }
     return config;
   },
   (error) => {
