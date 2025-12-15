@@ -26,6 +26,7 @@ import {
   SelectTrigger,
   SelectValue
 } from "@/components/ui/select"
+import { PersonnelCreateModel } from "@/data/models/personnel_model";
 const formSchema = z.object({
   firstName: z.string().min(1).min(1),
   lastName: z.string().min(1).min(1),

@@ -25,15 +25,30 @@ export default function Home() {
         <Navbar />
       </header>
       {/*Hero*/}
-      <section id="hero" className="relative h-screen ">
-        <Image
+      <section
+        id="hero"
+        className="relative h-screen "
+        style={{
+          backgroundImage: "url(/images/hero-bg.webp)",
+          backgroundSize: "cover",
+          backgroundPosition: "left bottom",
+        }}
+      >
+        {/* <Image
           objectFit="cover"
-          src="/images/hero-bg.jpg"
+          src="/images/hero-bg.webp"
           alt="hero image"
           className="w-full h-full left-0 top-0 absolute"
           fill
-        />
-        <div className="w-full h-full bg-black/50 relative">
+        /> */}
+
+        <div
+          className="w-full h-full relative"
+          style={{
+            backgroundImage:
+              "linear-gradient(to right, rgba(0, 0, 0, 200), rgba(0, 0, 0, 0.1))",
+          }}
+        >
           <div className="container px-4 relative w-full h-full flex flex-col gap-3 justify-center items-start md:px-20">
             <span className="text-7xl text-white">
               <span className="font-semibold">Bili</span>Buddy
@@ -116,7 +131,7 @@ export default function Home() {
               <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 md:flex-row-reverse">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
-                    src="/images/cerebral_palsy.jpg"
+                    src="/images/cerebral_palsy.webp"
                     alt="Child with cerebral palsy receiving injection from nurse"
                     fill
                     objectFit="cover"
@@ -170,7 +185,7 @@ export default function Home() {
         <div className="flex-grow relative h-full">
           <Image
             objectFit="cover"
-            src="/images/mother_with_child_2.jpg"
+            src="/images/mother_with_child_2.webp"
             alt="Smiling baby with mother"
             fill
           />
@@ -187,7 +202,7 @@ export default function Home() {
         <div className="flex-grow relative h-full">
           <Image
             objectFit="cover"
-            src="/images/neonatal_care_hospital.jpg"
+            src="/images/neonatal_care_hospital.webp"
             alt="Smiling baby with mother"
             fill
           />
