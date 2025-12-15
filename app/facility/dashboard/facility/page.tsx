@@ -18,13 +18,22 @@ import { Button } from "@/components/ui/button";
 import { Hospital, IdCard, MapPin, Pen, Plus } from "lucide-react";
 import FacilityForm from "./_components/facility_form";
 import DeleteButton from "@/app/_components/delete_button";
-import { toast } from "sonner";
 
 export default async function DashboardFacility() {
-  const [facility, stats] = await Promise.all([
-    getFacility(),
-    getFacilityStatistics(),
-  ]);
+  let facility = null;
+  let stats = null;
+
+  try {
+    const results = await Promise.all([
+      getFacility(),
+      getFacilityStatistics(),
+    ]);
+    facility = results[0];
+    stats = results[1];
+  } catch (error) {
+    console.error("Error fetching facility data:", error);
+    // Return early with null values - the UI will show the "no facility" state
+  }
 
   return (
     <div className="h-full">
@@ -109,13 +118,13 @@ export default async function DashboardFacility() {
             <div className="rounded-md flex flex-col justify-center items-center gap-4 border-2 border-primary flex-1 h-full">
               <p className="text-lg text-gray-500">Personnel</p>
               <p className="text-8xl text-primary font-bold">
-                {stats.totalHealthPersonnel}
+                {stats?.totalHealthPersonnel ?? 0}
               </p>
             </div>
             <div className="rounded-md flex flex-col justify-center items-center gap-4 bg-primary flex-1 h-full">
               <p className="text-lg text-gray-500">New Borns</p>
               <p className="text-8xl  font-bold text-primary-foreground">
-                {stats.totalNewborns}
+                {stats?.totalNewborns ?? 0}
               </p>
             </div>
           </div>
