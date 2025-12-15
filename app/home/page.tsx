@@ -41,7 +41,10 @@ export default function Home() {
             <p className="text-4xl max-w-lg text-white mb-8">
               Save newborns from the severe effects of neonatal jaundice
             </p>
-            <Button variant={"outline"} className="text-2xl px-8 py-6 text-white">
+            <Button
+              variant={"outline"}
+              className="text-2xl px-8 py-6 text-white"
+            >
               Get the App
             </Button>
           </div>
@@ -91,17 +94,18 @@ export default function Home() {
               <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 py-14 md:flex-row">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
-                    src="/images/cerebral_palsy.jpg"
+                    src="/images/healthcare-worker-on-phone.webp"
                     alt="Child with cerebral palsy receiving injection from nurse"
                     objectFit="cover"
                     fill
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl mb-4">Prevent Life-long Effects</h3>
+                  <h3 className="text-3xl mb-4">Improve Early Detection</h3>
                   <p>
-                    Bilibuddy seeks to ensture the early detection of severe
-                    neonatal jaundice in order to prevent life long caused by
+                    To enable early and accurate detection of neonatal jaundice
+                    by providing an affordable, AI-powered screening tool that
+                    works in low-resource and rural healthcare settings.
                   </p>
                 </div>
               </div>
@@ -133,17 +137,19 @@ export default function Home() {
               <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 py-14 md:flex-row">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
-                    src="/images/cerebral_palsy.jpg"
+                    src="/images/healthcare-workers-on-tablet.webp"
                     alt="Child with cerebral palsy receiving injection from nurse"
                     fill
                     objectFit="cover"
                   />
                 </div>
                 <div>
-                  <h3 className="text-3xl mb-4">Prevent Life-long Effects</h3>
+                  <h3 className="text-3xl mb-4">Empower Healthcare Workers</h3>
                   <p>
-                    Bilibuddy seeks to ensture the early detection of severe
-                    neonatal jaundice in order to prevent life long caused by
+                    To equip healthcare workers with an easy-to-use, reliable
+                    mobile solution that delivers consistent bilirubin
+                    estimation across all skin tones, improving clinical
+                    decision-making at the point of care.
                   </p>
                 </div>
               </div>
@@ -171,7 +177,7 @@ export default function Home() {
           <div className="w-full h-full bg-black/50 absolute top-0 left-0 flex flex-col gap-4 justify-center items-center text-primary-foreground">
             <h3 className="text-4xl font-semibold">Parents</h3>
             <p className="text-2xl max-w-100 font-light text-center">
-              With Bilibuddy, parents can easily monitory theic
+              With Bilibuddy, parents can easily monitor their child's health
             </p>
             <Button className="text-2xl bg-primary-foreground text-primary px-8 py-6 hover:text-primary-foreground">
               Get the App Now
@@ -188,7 +194,8 @@ export default function Home() {
           <div className="w-full h-full bg-black/50 absolute top-0 left-0 flex flex-col gap-4 justify-center items-center text-primary-foreground">
             <h3 className="text-4xl font-semibold">Hospitals and Clinics</h3>
             <p className="text-2xl max-w-100 font-light text-center">
-              With Bilibuddy, parents can easily monitory theic
+              With BiliBuddy, healthcare workers can give more confident
+              diagnosis
             </p>
             <Link
               href="/facility/register"
@@ -248,13 +255,13 @@ export default function Home() {
               <div>
                 <h3 className="text-2xl font-semibold mb-2">Follow Us</h3>
                 <div className="flex flex-row gap-4">
-                  <Link href="#">
+                  <Link href="https://www.linkedin.com/company/distributed-iot-platforms-privacy-and-edge-intelligence-research/posts/?feedView=all">
                     <Linkedin className="size-10" />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://github.com/Dipper-Lab">
                     <Github className="size-10" />
                   </Link>
-                  <Link href="#">
+                  <Link href="https://twitter.com/dipperlabknust">
                     <Twitter className="size-10" />
                   </Link>
                 </div>
@@ -299,9 +306,15 @@ export default function Home() {
             <div className="flex flex-col gap-4">
               <h4>CONTACT</h4>
               <div className="flex flex-row gap-2">
-                <Linkedin className="w-10 h-10" />
-                <Facebook className="w-10 h-10" />
-                <Twitter className="w-10 h-10" />
+                <Link href="https://www.linkedin.com/company/distributed-iot-platforms-privacy-and-edge-intelligence-research/posts/?feedView=all">
+                  <Linkedin className="size-10" />
+                </Link>
+                <Link href="https://github.com/Dipper-Lab">
+                  <Github className="size-10" />
+                </Link>
+                <Link href="https://twitter.com/dipperlabknust">
+                  <Twitter className="size-10" />
+                </Link>
               </div>
             </div>
             <div className="flex flex-col gap-2">
