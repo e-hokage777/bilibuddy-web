@@ -1,5 +1,4 @@
 import { Card } from "@/components/ui/card";
-import DashboardSectionHeader from "../_components/dashboard_section_header";
 
 import {
   deleteFacility,
@@ -21,10 +20,17 @@ import DeleteButton from "@/app/_components/delete_button";
 import { toast } from "sonner";
 
 export default async function DashboardFacility() {
-  const [facility, stats] = await Promise.all([
-    getFacility(),
-    getFacilityStatistics(),
-  ]);
+  let facility = null;
+  let stats = null;
+
+  try {
+    [facility, stats] = await Promise.all([
+      getFacility(),
+      getFacilityStatistics(),
+    ]);
+  } catch (error) {
+    console.error("Error fetching facility data:", error);
+  }
 
   return (
     <div className="h-full">
@@ -109,13 +115,13 @@ export default async function DashboardFacility() {
             <div className="rounded-md flex flex-col justify-center items-center gap-4 border-2 border-primary flex-1 h-full">
               <p className="text-lg text-gray-500">Personnel</p>
               <p className="text-8xl text-primary font-bold">
-                {stats.totalHealthPersonnel}
+                {stats?.totalHealthPersonnel}
               </p>
             </div>
             <div className="rounded-md flex flex-col justify-center items-center gap-4 bg-primary flex-1 h-full">
               <p className="text-lg text-gray-500">New Borns</p>
               <p className="text-8xl  font-bold text-primary-foreground">
-                {stats.totalNewborns}
+                {stats?.totalNewborns}
               </p>
             </div>
           </div>
