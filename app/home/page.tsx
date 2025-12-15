@@ -25,7 +25,7 @@ export default function Home() {
         <Navbar />
       </header>
       {/*Hero*/}
-      <section id="hero" className="relative h-screen">
+      <section id="hero" className="relative h-screen ">
         <Image
           objectFit="cover"
           src="/images/hero-bg.jpg"
@@ -35,13 +35,13 @@ export default function Home() {
         />
         <div className="w-full h-full bg-black/50 relative">
           <div className="container px-4 relative w-full h-full flex flex-col gap-3 justify-center items-start md:px-20">
-            <span className="text-7xl text-primary">
+            <span className="text-7xl text-white">
               <span className="font-semibold">Bili</span>Buddy
             </span>
-            <p className="text-4xl max-w-lg text-secondary">
+            <p className="text-4xl max-w-lg text-white mb-8">
               Save newborns from the severe effects of neonatal jaundice
             </p>
-            <Button variant={"outline"} className="text-2xl px-8 py-6">
+            <Button variant={"outline"} className="text-2xl px-8 py-6 text-white">
               Get the App
             </Button>
           </div>
@@ -70,7 +70,7 @@ export default function Home() {
               index={2}
             />
             <DemoCard
-              image="/images/how_it_works/results.svg"
+              image="/images/how_it_works/results-in-frame.svg"
               description="Submit images and view results"
               index={3}
             />
@@ -78,14 +78,17 @@ export default function Home() {
         </div>
       </section>
       {/** Our mission */}
-      <section id="our-mission" className={cn(sectionStyles, "bg-primary px-0")}>
+      <section
+        id="our-mission"
+        className={cn(sectionStyles, "bg-primary px-0")}
+      >
         <div className=" text-primary-foreground">
           <h2 className={sectionTitleStyles}>
             Our <span className="font-semibold">Mission</span>
           </h2>
           <div className="w-full">
             <div className="container mx-auto px-4">
-              <div className="flex justify-center items-center max-w-6xl mx-auto gap-8 py-14">
+              <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 py-14 md:flex-row">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
                     src="/images/cerebral_palsy.jpg"
@@ -106,7 +109,7 @@ export default function Home() {
           </div>
           <div className="bg-secondary py-14">
             <div className="container mx-auto px-4">
-              <div className="flex flex-row-reverse justify-center items-center max-w-6xl mx-auto gap-8">
+              <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 md:flex-row-reverse">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
                     src="/images/cerebral_palsy.jpg"
@@ -127,7 +130,7 @@ export default function Home() {
           </div>
           <div>
             <div className="container mx-auto px-4">
-              <div className="flex justify-center items-center max-w-6xl mx-auto gap-8 py-14">
+              <div className="flex flex-col justify-center items-center max-w-6xl mx-auto gap-8 py-14 md:flex-row">
                 <div className="h-[400px] max-w-[600px] w-full relative">
                   <Image
                     src="/images/cerebral_palsy.jpg"

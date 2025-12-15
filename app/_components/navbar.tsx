@@ -9,7 +9,7 @@ export default function Navbar({ className }: { className?: string }) {
       <Link href="/">
         <Image src="logo.svg" alt="logo" width={163} height={39} />
       </Link>
-      <nav>
+      <nav className="hidden md:block">
         <ul className="flex items-center gap-4">
             <li>
                 <Link className={linkStyles} href="#hero">Home</Link>
