@@ -20,20 +20,35 @@ import FacilityForm from "./_components/facility_form";
 import DeleteButton from "@/app/_components/delete_button";
 
 export default async function DashboardFacility() {
-  let facility = null;
-  let stats = null;
+  let facility = {
+    id: "1",
+    name: "Central Hospital",
+    type: "Government Hospital",
+    community: "Accra",
+    district: "Accra Metro",
+    region: "Greater Accra",
+    createdAt: new Date("2024-01-15").toString(),
+    updatedAt: new Date("2024-01-15").toString(),
+  };
 
-  try {
-    const results = await Promise.all([
-      getFacility(),
-      getFacilityStatistics(),
-    ]);
-    facility = results[0];
-    stats = results[1];
-  } catch (error) {
-    console.error("Error fetching facility data:", error);
-    // Return early with null values - the UI will show the "no facility" state
-  }
+  let stats = {
+    totalHealthPersonnel: 45,
+    totalNewborns: 128,
+  };
+
+  // try {
+  //   const results = await Promise.all([
+  //     getFacility(),
+  //     getFacilityStatistics(),
+  //   ]);
+  //   facility = results[0];
+  //   stats = results[1];
+  // } catch (error) {
+  //   console.error("Error fetching facility data:", error);
+  //   // Return early with null values - the UI will show the "no facility" state
+  // }
+
+  
 
   return (
     <div className="h-full">
