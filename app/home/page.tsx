@@ -31,7 +31,7 @@ export default function Home() {
         style={{
           backgroundImage: "url(/images/hero-bg.webp)",
           backgroundSize: "cover",
-          backgroundPosition: "left bottom",
+          backgroundPosition: "right bottom",
         }}
       >
         {/* <Image
@@ -50,7 +50,7 @@ export default function Home() {
           }}
         >
           <div className="container px-4 relative w-full h-full flex flex-col gap-3 justify-center items-start md:px-20">
-            <span className="text-7xl text-white">
+            <span className="text-5xl text-white md:text-7xl">
               <span className="font-semibold">Bili</span>Buddy
             </span>
             <p className="text-4xl max-w-lg text-white mb-8">
@@ -173,14 +173,14 @@ export default function Home() {
         </div>
       </section>
       {/** who can use */}
-      <section className="h-screen flex flex-col relative md:flex-row">
+      <section className="h-[140vh] min-h-screen flex flex-col relative md:flex-row md:h-[100vh]">
         <h2
           className={cn(
             sectionTitleStyles,
-            "absolute w-full top-0 left-0 z-10 text-primary-foreground mt-20"
+            "mt-4 absolute w-full top-0 left-0 z-10 text-primary-foreground md:mt-20"
           )}
         >
-          <span className="font-semibold">Who</span> Can Use BiliBuddy
+          <span className="font-semibold">Who</span> Can Use BiliBuddy ?
         </h2>
         <div className="flex-grow relative h-full">
           <Image

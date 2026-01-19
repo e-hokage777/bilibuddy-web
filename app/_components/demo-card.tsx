@@ -18,7 +18,7 @@ export default function DemoCard({
     >
       <p className="md:sm lg:text-lg">{description}</p>
       <img
-        //   className="static"
+          className="max-w-[220px] md:max-w-[150px] lg:max-w-[220px]"
         src={image}
         alt={description}
       />
